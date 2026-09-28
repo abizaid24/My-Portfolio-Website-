@@ -14,6 +14,7 @@ export interface Project {
   architecture?: string;
   engineeringHighlights: string[];
   technologies: string[];
+  caseStudyPdf?: string;
   image: string;
   video?: string | null;
   videoPoster?: string | null;
@@ -191,6 +192,7 @@ export const profile: ProfileData = {
         "Fixed Android gesture handler root layout responsiveness, image header auth, and calorie recalculation logic."
       ],
       technologies: ["Python", "FastAPI", "MongoDB", "Gemini Vision", "MCP", "React Native", "Expo Router"],
+      caseStudyPdf: "/case-studies/nutriai-case-study.pdf",
       image: "/images/projects/nutria-ai.jpg",
       video: null,
       videoPoster: null,
@@ -224,6 +226,7 @@ export const profile: ProfileData = {
         "Admin analytics dashboard monitoring occupancy rates, revenue generation, and weekly rolling flight generator."
       ],
       technologies: ["Python 3.12", "FastAPI", "SQLAlchemy", "PostgreSQL", "Google Gemini API", "Stripe", "Docker", "Next.js"],
+      caseStudyPdf: "/case-studies/airlynk-ai-case-study.pdf",
       image: "/images/projects/airlynk-ai.jpg",
       video: null,
       videoPoster: null,
@@ -257,6 +260,7 @@ export const profile: ProfileData = {
         "Enforced strict typing and validation with Pydantic v2 schemas and role-based access tokens."
       ],
       technologies: ["Python", "FastAPI", "SQLAlchemy", "Pydantic", "JWT Auth", "PostgreSQL"],
+      caseStudyPdf: "/case-studies/taskflow-ai-case-study.pdf",
       image: "/images/projects/taskflow-ai.jpg",
       video: null,
       videoPoster: null,
@@ -269,37 +273,6 @@ export const profile: ProfileData = {
       },
       featured: true,
       accentColor: "#8b5cf6"
-    },
-    {
-      id: "prestigewear",
-      slug: "prestigewear",
-      name: "PrestigeWear",
-      category: "Backend APIs",
-      highlightTag: "Production REST API",
-      role: "Backend Engineer",
-      oneLiner: "Production-ready e-commerce backend API with role-based auth, product CRUD, and inventory tracking.",
-      shortDescription: "High-throughput e-commerce microservice featuring atomic stock deduction, order state transitions, and Alembic migrations.",
-      description: "High-performance e-commerce API supporting auto stock deduction, persistent cart calculations, order state machines (Pending → Processing → Shipped), and auto-generated Swagger/ReDoc specs.",
-      overview: "PrestigeWear provides a robust shopping REST API backend designed for high order volumes and concurrent checkouts.",
-      problem: "Race conditions during flash sales can lead to negative inventory counts and failed order fulfillments.",
-      solution: "Implemented atomic stock deduction locks within PostgreSQL transactions, ensuring inventory accuracy under load.",
-      architecture: "FastAPI REST API -> PostgreSQL (Neon) -> Bcrypt Hashing -> Swagger Interactive Docs.",
-      engineeringHighlights: [
-        "Built atomic inventory deduction logic to prevent race conditions during high-volume order checkouts.",
-        "Implemented Bcrypt password hashing, JWT refresh tokens, and structured Alembic database migrations."
-      ],
-      technologies: ["Python 3.12", "FastAPI", "PostgreSQL", "SQLAlchemy", "Alembic", "Pydantic", "JWT", "Bcrypt"],
-      image: "/images/projects/prestigewear.jpg",
-      video: null,
-      videoPoster: null,
-      videoUrl: null,
-      videoType: "video/mp4",
-      links: {
-        backend: "https://github.com/abizaid24/PrestigeWear_Backend",
-        frontend: "https://github.com/abizaid24/PrestigeWear_Frontend"
-      },
-      featured: true,
-      accentColor: "#f59e0b"
     },
     {
       id: "khanaywala-ai",

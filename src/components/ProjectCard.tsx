@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { ArrowUpRight, Github, Sparkles } from 'lucide-react';
@@ -8,6 +9,7 @@ import ProjectVideoPlayer from '@/components/ProjectVideoPlayer';
 import MacWindow from '@/components/ui/MacWindow';
 import IPhoneFrame from '@/components/ui/IPhoneFrame';
 import MuxVideo from '@/components/ui/MuxVideo';
+import CaseStudyViewer from '@/components/CaseStudyViewer';
 import { DURATION, EASE } from '@/lib/motion';
 
 interface ProjectCardProps {
@@ -20,6 +22,7 @@ export default function ProjectCard({ project, onClick, index }: ProjectCardProp
   const reversed = index % 2 === 1;
   const primaryLink = project.links.github || project.links.backend || project.links.frontend;
   const isMobileDemo = project.videoAspect === 'mobile' && Boolean(project.muxPlaybackId);
+  const [isCaseStudyOpen, setIsCaseStudyOpen] = useState(false);
 
   return (
     <motion.div
@@ -109,13 +112,24 @@ export default function ProjectCard({ project, onClick, index }: ProjectCardProp
           <div className="flex items-center gap-4 mt-auto pt-4 border-t border-neutral-100 dark:border-neutral-800">
             <span className="text-[11px] font-mono text-neutral-400 dark:text-neutral-500">{project.role}</span>
             <div className="flex-1" />
-            <Link
-              href={`/work/${project.slug}`}
-              className="group/link inline-flex items-center gap-1 text-xs font-mono font-semibold text-neutral-900 dark:text-white hover:text-emerald-700 dark:hover:text-emerald-400"
-            >
-              <span>Case Study</span>
-              <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
-            </Link>
+            {project.caseStudyPdf ? (
+              <button
+                type="button"
+                onClick={() => setIsCaseStudyOpen(true)}
+                className="group/link inline-flex items-center gap-1 text-xs font-mono font-semibold text-neutral-900 dark:text-white hover:text-emerald-700 dark:hover:text-emerald-400"
+              >
+                <span>Case Study</span>
+                <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+              </button>
+            ) : (
+              <Link
+                href={`/work/${project.slug}`}
+                className="group/link inline-flex items-center gap-1 text-xs font-mono font-semibold text-neutral-900 dark:text-white hover:text-emerald-700 dark:hover:text-emerald-400"
+              >
+                <span>Case Study</span>
+                <ArrowUpRight className="w-3.5 h-3.5 transition-transform group-hover/link:translate-x-0.5 group-hover/link:-translate-y-0.5" />
+              </Link>
+            )}
             {primaryLink && (
               <Link
                 href={primaryLink}
@@ -131,6 +145,10 @@ export default function ProjectCard({ project, onClick, index }: ProjectCardProp
           </div>
         </div>
       </div>
+
+      {project.caseStudyPdf && isCaseStudyOpen && (
+        <CaseStudyViewer project={project} onClose={() => setIsCaseStudyOpen(false)} />
+      )}
     </motion.div>
   );
 }

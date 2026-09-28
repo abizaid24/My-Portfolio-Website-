@@ -52,8 +52,6 @@ export default function ProjectVideoPlayer({
         return 'from-blue-950 via-neutral-900 to-neutral-950 border-blue-500/20';
       case 'taskflow-ai':
         return 'from-purple-950 via-neutral-900 to-neutral-950 border-purple-500/20';
-      case 'prestigewear':
-        return 'from-amber-950 via-neutral-900 to-neutral-950 border-amber-500/20';
       case 'khanaywala-ai':
         return 'from-rose-950 via-neutral-900 to-neutral-950 border-rose-500/20';
       default:
@@ -93,8 +91,8 @@ export default function ProjectVideoPlayer({
       ) : null}
 
       {/* Fallback Editorial Poster / Graphic Container — only shown when there's no real
-          video to display yet (e.g. PrestigeWear). Once a video exists, it should be the
-          whole show, not have a fake code HUD layered on top of it. */}
+          video to display yet. Once a video exists, it should be the whole show, not
+          have a fake code HUD layered on top of it. */}
       {!hasVideo && (
         <div className="relative z-10 w-full h-full p-5 sm:p-6 flex flex-col justify-between">
           {/* Top Tag Bar */}
